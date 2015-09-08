@@ -7,6 +7,7 @@
 * [NSInteger转NSString 工具宏](#mark5)
 * [工具宏-图片相关](#mark6)
 * [工具宏-颜色相关](#mark7)
+* [获得当前屏幕截屏](#mark8)
 
 ---
 <a name="mark1"></a>
@@ -128,4 +129,20 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:plistPath]
 
 //清除背景色
 #define CLEARCOLOR [UIColor clearColor]
+```
+<a name="mark8"></a>
+* 获得当前屏幕截屏
+
+```Objective-C
+//获得当前屏幕截图
++(UIImage*)getCurrentSnapshot{
+    UIWindow *window = [[UIApplication sharedApplication].delegate window];
+    UIGraphicsBeginImageContext(window.rootViewController.view.bounds.size);
+    [window.rootViewController.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    //可以存入相册
+    //    UIImageWriteToSavedPhotosAlbum(image, self, nil, nil);
+    UIGraphicsEndImageContext();
+    return image;
+}
 ```
