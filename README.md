@@ -8,6 +8,7 @@
 * [工具宏-图片相关](#mark6)
 * [工具宏-颜色相关](#mark7)
 * [获得当前屏幕截屏](#mark8)
+* [添加拷贝剪切板](#mark9)
 
 ---
 <a name="mark1"></a>
@@ -145,4 +146,12 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:plistPath]
     UIGraphicsEndImageContext();
     return image;
 }
+```
+
+<a name="mark9"></a>
+* 添加拷贝剪切板
+
+```Objective-C
+UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string =
 ```
