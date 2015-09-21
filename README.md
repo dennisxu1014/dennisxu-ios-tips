@@ -9,6 +9,7 @@
 * [工具宏-颜色相关](#mark7)
 * [获得当前屏幕截屏](#mark8)
 * [添加拷贝剪切板](#mark9)
+* [xcode7 app 不能联网解决办法](#mark10)
 
 ---
 <a name="mark1"></a>
@@ -155,3 +156,8 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:plistPath]
 UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string =
 ```
+
+<a name="mark10"></a>
+* xcode7 app 不能联网解决办法
+
+新装的Xcode7 编译程序 出现 #warning: 获取app配置信息失败: The resource could not be loaded because the App Transport Security 我开始以为是xcode没优化好的缘故，其实这是苹果加大安全的管控，将以往HTTP协议强制改为HTTPS协议，以后的APP应该都是了，根本解决办法 改协议，临时解决办法在Info.plist中添加  NSAppTransportSecurity 类型  Dictionary Dictionary 下添加  NSAllowsArbitraryLoads 类型 Boolean ,值设为  YES，搞定,XCODE7
